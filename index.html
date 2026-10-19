@@ -4,589 +4,648 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tesla Roadster | Electric Performance</title>
+<title>Darshan Patil | Cloud & DevOps Portfolio</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg: #070b18;
+    --panel: rgba(17, 27, 51, .72);
+    --cyan: #42e8ff;
+    --purple: #a78bfa;
+    --text: #edf4ff;
+    --muted: #a0aec6;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
-
-html { scroll-behavior: smooth; }
 
 body {
-    background: #fff;
-    color: #171a20;
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        radial-gradient(ellipse at 15% 20%, #102e50 0, transparent 42%),
+        radial-gradient(ellipse at 85% 35%, #29154d 0, transparent 40%),
+        #070b18;
 }
 
-header {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    padding: 25px 6%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 10;
-    color: white;
-}
-
-.logo {
-    font-size: 23px;
-    font-weight: 900;
-    letter-spacing: 5px;
+#stars {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
 }
 
 nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
     display: flex;
-    gap: 28px;
-    font-size: 12px;
-    font-weight: bold;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 8%;
+    background: rgba(7, 11, 24, .78);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(66, 232, 255, .12);
 }
 
-nav a:hover { opacity: .65; }
+.logo {
+    font: 700 1.3rem 'Space Grotesk', sans-serif;
+    color: var(--cyan);
+}
+
+.logo span { color: white; }
+
+nav ul {
+    display: flex;
+    gap: 27px;
+    list-style: none;
+}
+
+nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: .88rem;
+    transition: .3s;
+}
+
+nav a:hover { color: var(--cyan); }
+
+section {
+    padding: 100px 8%;
+    scroll-margin-top: 65px;
+}
 
 .hero {
     min-height: 100vh;
-    position: relative;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
     align-items: center;
-    color: white;
-    background:
-        linear-gradient(90deg, #000b 0%, #0005 55%, #0002),
-        linear-gradient(0deg, #0007, transparent 50%),
-        url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2000&q=90")
-        center / cover no-repeat;
+    gap: 45px;
+    padding-top: 130px;
 }
 
-.hero-content {
-    padding: 120px 8%;
-    max-width: 750px;
-}
-
-.eyebrow {
-    letter-spacing: 4px;
-    font-size: 11px;
+.tag {
+    display: inline-block;
+    padding: 9px 15px;
+    border: 1px solid rgba(66, 232, 255, .35);
+    border-radius: 50px;
+    background: rgba(66, 232, 255, .07);
+    color: var(--cyan);
+    font-size: .8rem;
     margin-bottom: 25px;
 }
 
 h1 {
-    font-size: clamp(55px, 9vw, 110px);
-    letter-spacing: -5px;
-    line-height: .95;
-    font-weight: 800;
+    font: 700 clamp(2.7rem, 5.5vw, 5rem)/1.08 'Space Grotesk', sans-serif;
+    letter-spacing: -2px;
 }
 
-.hero p {
-    margin-top: 25px;
-    color: #ddd;
-    line-height: 1.8;
-    max-width: 430px;
-    font-size: 15px;
+.gradient {
+    background: linear-gradient(90deg, var(--cyan), #9b8cff, #f0a6ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
-.actions {
+.hero p, .about p {
+    color: var(--muted);
+    line-height: 1.9;
+    margin: 25px 0;
+    max-width: 620px;
+}
+
+.buttons {
     display: flex;
+    gap: 14px;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 30px;
+    margin-top: 28px;
 }
 
 .btn {
     display: inline-block;
-    min-width: 180px;
-    text-align: center;
-    padding: 15px 22px;
-    border: 1px solid white;
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 1px;
+    padding: 14px 22px;
+    text-decoration: none;
+    color: var(--bg);
+    font-weight: 700;
+    border-radius: 9px;
+    background: linear-gradient(110deg, var(--cyan), #9c9cff);
     transition: .3s;
 }
 
-.btn-light {
-    background: white;
-    color: #171a20;
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px #42e8ff35;
 }
 
-.btn-outline {
+.btn.secondary {
     background: transparent;
+    border: 1px solid #43516e;
     color: white;
 }
 
-.btn:hover {
-    transform: translateY(-3px);
-    opacity: .8;
-}
-
-.section {
-    padding: 90px 8%;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 35px;
-    margin-bottom: 15px;
-    letter-spacing: -1px;
-}
-
-.subtitle {
-    text-align: center;
-    color: #666;
-    line-height: 1.7;
-    max-width: 650px;
-    margin: 0 auto 50px;
-}
-
-.specs {
+.orbit {
+    height: 390px;
+    width: 390px;
+    max-width: 100%;
+    justify-self: center;
+    position: relative;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    max-width: 1100px;
-    margin: auto;
+    place-items: center;
+    border: 1px solid #42e8ff45;
+    border-radius: 50%;
+    box-shadow: 0 0 80px #42e8ff12, inset 0 0 60px #a78bfa12;
+    animation: float 5s ease-in-out infinite;
 }
 
-.spec {
-    padding: 30px 15px;
+.orbit::before, .orbit::after {
+    content: "";
+    position: absolute;
+    border: 1px dashed #a78bfa70;
+    border-radius: 50%;
+    inset: 30px;
+    animation: rotate 18s linear infinite;
+}
+
+.orbit::after {
+    inset: 65px;
+    border-color: #42e8ff70;
+    animation-direction: reverse;
+    animation-duration: 13s;
+}
+
+.core {
+    font-size: 6rem;
+    filter: drop-shadow(0 0 25px #42e8ff);
+}
+
+.float-icon {
+    position: absolute;
+    font-size: 2rem;
+    background: #111b33;
+    border: 1px solid #42e8ff50;
+    padding: 12px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px #42e8ff16;
+}
+
+.i1 { top: 10%; left: 12%; }
+.i2 { top: 17%; right: 6%; }
+.i3 { bottom: 12%; left: 8%; }
+.i4 { bottom: 8%; right: 12%; }
+
+@keyframes rotate { to { transform: rotate(360deg); } }
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+}
+
+.section-heading {
     text-align: center;
-    border-bottom: 1px solid #ddd;
+    margin-bottom: 48px;
 }
 
-.spec h3 {
-    font-size: clamp(28px, 4vw, 43px);
+.section-heading h2 {
+    font: 700 clamp(2rem, 4vw, 3rem) 'Space Grotesk', sans-serif;
     margin-bottom: 12px;
 }
 
-.spec p {
-    color: #666;
-    font-size: 12px;
-    letter-spacing: 1px;
-    line-height: 1.6;
-}
+.section-heading p { color: var(--muted); }
 
-.features {
-    background: #f5f5f5;
-}
-
-.feature-grid {
+.grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-    max-width: 1200px;
-    margin: auto;
-}
-
-.feature {
-    background: white;
-    padding: 30px;
-    min-height: 190px;
-}
-
-.feature .number {
-    color: #e82127;
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
-
-.feature h3 {
-    margin: 18px 0 12px;
-    font-size: 19px;
-}
-
-.feature p {
-    color: #666;
-    font-size: 14px;
-    line-height: 1.8;
-}
-
-.price-section {
-    background: #101114;
-    color: white;
-    text-align: center;
-}
-
-.price-card {
-    max-width: 720px;
-    margin: auto;
-    padding: 45px 25px;
-    border: 1px solid #45464b;
-}
-
-.price-card h3 {
-    font-size: 12px;
-    letter-spacing: 3px;
-    color: #bbb;
-}
-
-.price {
-    font-size: clamp(28px, 5vw, 45px);
-    margin: 25px 0 15px;
-}
-
-.price-card p {
-    color: #bbb;
-    line-height: 1.8;
-    font-size: 14px;
-    margin: 15px auto 25px;
-}
-
-.price-card .btn {
-    margin: 5px;
-}
-
-.variants {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
-    max-width: 1100px;
-    margin: 40px auto 0;
-    text-align: left;
 }
 
-.variant {
-    padding: 25px;
-    border: 1px solid #444;
+.card {
+    padding: 26px;
+    border: 1px solid #263650;
+    border-radius: 18px;
+    background: var(--panel);
+    backdrop-filter: blur(10px);
+    transition: .35s;
 }
 
-.variant h3 {
-    margin-bottom: 15px;
-    font-size: 21px;
+.card:hover {
+    transform: translateY(-7px);
+    border-color: var(--cyan);
+    box-shadow: 0 15px 45px #42e8ff0c;
 }
 
-.variant p {
-    font-size: 13px;
+.card-icon { font-size: 2.2rem; margin-bottom: 18px; }
+
+.card h3 {
+    font: 600 1.2rem 'Space Grotesk', sans-serif;
+    margin-bottom: 13px;
+}
+
+.card p {
+    color: var(--muted);
     line-height: 1.8;
-    color: #bbb;
+    font-size: .92rem;
 }
 
-.notice {
-    color: #aaa;
-    font-size: 11px;
-    line-height: 1.8;
-    max-width: 850px;
-    margin: 35px auto 0;
+.pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 20px;
 }
 
-.design {
+.pill {
+    font-size: .76rem;
+    color: var(--cyan);
+    background: #42e8ff0d;
+    border: 1px solid #42e8ff35;
+    border-radius: 6px;
+    padding: 7px 10px;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 290px;
+}
+
+.project-card .pills { margin-bottom: 22px; }
+.project-card .project-link {
+    color: var(--cyan);
+    text-decoration: none;
+    margin-top: auto;
+    padding-top: 15px;
+}
+
+.about-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 50px;
     align-items: center;
+    gap: 40px;
 }
 
-.design img {
-    width: 100%;
-    display: block;
+.about-box {
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid #263650;
+    background: var(--panel);
 }
 
-.design h2 {
-    font-size: 38px;
-    line-height: 1.2;
-    margin-bottom: 20px;
+.stat {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 17px 0;
+    border-bottom: 1px solid #263650;
 }
 
-.design p {
-    color: #666;
-    line-height: 1.9;
-    font-size: 14px;
+.stat:last-child { border-bottom: 0; }
+.stat span { color: var(--muted); }
+.stat strong { color: var(--cyan); text-align: right; }
+
+.contact-card {
+    max-width: 720px;
+    margin: auto;
+    text-align: center;
+    padding: 45px 25px;
+    border: 1px solid #263650;
+    border-radius: 22px;
+    background: var(--panel);
 }
 
-.design .btn {
-    margin-top: 25px;
-    background: #171a20;
-    color: white;
-    border-color: #171a20;
+.contact-card p {
+    color: var(--muted);
+    line-height: 1.8;
+    margin: 20px auto;
 }
 
 footer {
-    background: #f5f5f5;
-    padding: 35px 7%;
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
-    font-size: 11px;
-    color: #555;
+    text-align: center;
+    padding: 30px 15px;
+    color: var(--muted);
+    border-top: 1px solid #263650;
+    font-size: .85rem;
 }
 
-footer a {
-    text-decoration: underline;
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: .7s ease;
 }
 
-@media(max-width: 800px) {
-    header { padding: 22px 5%; }
-    nav { gap: 12px; }
-    nav a { font-size: 10px; }
-    .hero-content { padding: 130px 6% 80px; }
-    .specs, .feature-grid, .variants {
-        grid-template-columns: 1fr;
-    }
-    .design { grid-template-columns: 1fr; }
-    .section { padding: 65px 6%; }
-    h1 { letter-spacing: -2px; }
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-@media(max-width: 480px) {
-    header {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 17px;
-    }
-    nav {
-        flex-wrap: wrap;
-    }
-    .hero { min-height: 90vh; }
-    .hero-content { padding-top: 170px; }
-    .btn { width: 100%; }
-    .section-title { font-size: 28px; }
+@media(max-width: 900px) {
+    .hero { grid-template-columns: 1fr; text-align: center; }
+    .hero p { margin-inline: auto; }
+    .buttons { justify-content: center; }
+    .orbit { width: 300px; height: 300px; margin-top: 20px; }
+    .core { font-size: 4.5rem; }
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .about-layout { grid-template-columns: 1fr; }
+}
+
+@media(max-width: 600px) {
+    nav { padding: 17px 5%; }
+    nav ul { gap: 12px; }
+    nav a { font-size: .75rem; }
+    .logo { font-size: 1.05rem; }
+    section { padding: 80px 6%; }
+    .grid { grid-template-columns: 1fr; }
+    h1 { letter-spacing: -1px; }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <a href="#" class="logo">TESLA</a>
+<canvas id="stars"></canvas>
 
-    <nav>
-        <a href="#performance">Performance</a>
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#design">Design</a>
-    </nav>
-</header>
+<nav>
+    <div class="logo">DARSHAN<span>.DEV</span></div>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
 
-<section class="hero">
-    <div class="hero-content">
-        <div class="eyebrow">ALL-ELECTRIC SUPERCAR</div>
-
-        <h1>ROADSTER</h1>
-
-        <p>
-            Uncompromising performance. Aerodynamic design.
-            Revolutionary electric engineering.
-            Discover the next generation of the Tesla Roadster.
-        </p>
-
-        <div class="actions">
-            <a class="btn btn-light" href="#performance">
-                EXPLORE ROADSTER
-            </a>
-
-            <a class="btn btn-outline"
-               href="https://www.tesla.com/roadster"
-               target="_blank" rel="noopener noreferrer">
-                OFFICIAL TESLA WEBSITE
-            </a>
-        </div>
-    </div>
-</section>
-
-<section class="section" id="performance">
-    <h2 class="section-title">Built for Extraordinary Performance</h2>
-
-    <p class="subtitle">
-        Tesla's published Roadster headline specifications.
-        Actual final production specifications may change.
-    </p>
-
-    <div class="specs">
-        <div class="spec">
-            <h3>1.9 sec*</h3>
-            <p>0–60 MPH<br>ACCELERATION TARGET</p>
-        </div>
-
-        <div class="spec">
-            <h3>250+ MPH*</h3>
-            <p>TOP SPEED<br>CLAIMED TARGET</p>
-        </div>
-
-        <div class="spec">
-            <h3>620 mi*</h3>
-            <p>ESTIMATED RANGE<br>PER CHARGE</p>
-        </div>
-    </div>
-</section>
-
-<section class="section features" id="features">
-    <h2 class="section-title">Technology & Features</h2>
-
-    <p class="subtitle">
-        Performance, control and design combine in Tesla's
-        next-generation Roadster concept.
-    </p>
-
-    <div class="feature-grid">
-        <article class="feature">
-            <div class="number">01 / POWER</div>
-            <h3>All-Electric Performance</h3>
-            <p>
-                Electric propulsion designed for rapid acceleration
-                and responsive power delivery.
-            </p>
-        </article>
-
-        <article class="feature">
-            <div class="number">02 / AERODYNAMICS</div>
-            <h3>Active Aerodynamics</h3>
-            <p>
-                An aerodynamic design and active systems intended
-                to improve stability and performance.
-            </p>
-        </article>
-
-        <article class="feature">
-            <div class="number">03 / INTERIOR</div>
-            <h3>Driver-Focused Cabin</h3>
-            <p>
-                A minimalist cockpit concept with a steering
-                interface and digital displays.
-            </p>
-        </article>
-
-        <article class="feature">
-            <div class="number">04 / ROOF</div>
-            <h3>Removable Glass Roof</h3>
-            <p>
-                Tesla describes a removable glass roof that can
-                be stored in the car for an open-air experience.
-            </p>
-        </article>
-
-        <article class="feature">
-            <div class="number">05 / CONTROL</div>
-            <h3>Advanced Vehicle Control</h3>
-            <p>
-                The latest Roadster presentation describes
-                advanced steering and track-focused control systems.
-            </p>
-        </article>
-
-        <article class="feature">
-            <div class="number">06 / SPACE-AGE TECH</div>
-            <h3>Optional Thrust Technology</h3>
-            <p>
-                Tesla describes optional cold-gas thrusters
-                for special performance configurations. Flight
-                capability is not approved for public road use.
-            </p>
-        </article>
-    </div>
-</section>
-
-<section class="section price-section" id="pricing">
-    <h2 class="section-title">Pricing & Reservations</h2>
-
-    <p class="subtitle">
-        Check Tesla directly for the latest official pricing,
-        reservation terms and delivery information.
-    </p>
-
-    <div class="price-card">
-        <h3>TESLA ROADSTER</h3>
-
-        <div class="price">Price not confirmed</div>
+<section class="hero" id="home">
+    <div>
+        <span class="tag">☁️ CLOUD • DEVOPS • AUTOMATION</span>
+        <h1>Hi, I'm <span class="gradient">Darshan Patil</span><br>
+        Building the Future with Cloud & DevOps.</h1>
 
         <p>
-            A final retail price and delivery schedule have not
-            been confirmed here. Reservation deposits are not
-            the total vehicle purchase price.
+            I am learning cloud computing and DevOps, building hands-on
+            projects with AWS, Docker, Jenkins, Linux and CI/CD automation.
+            My goal is to turn ideas into reliable, scalable applications.
         </p>
 
-        <a class="btn btn-light"
-           href="https://www.tesla.com/roadster"
-           target="_blank" rel="noopener noreferrer">
-            CHECK OFFICIAL PRICING
-        </a>
-
-        <a class="btn btn-outline"
-           href="https://www.tesla.com/roadster"
-           target="_blank" rel="noopener noreferrer">
-            RESERVATION DETAILS
-        </a>
+        <div class="buttons">
+            <a class="btn" href="#projects">Explore My Projects ↗</a>
+            <a class="btn secondary" href="#contact">Let's Connect</a>
+        </div>
     </div>
 
-    <div class="variants">
-        <article class="variant">
-            <h3>Performance</h3>
-            <p>
-                Road-focused configuration with seating for two,
-                active aerodynamics and a multi-mode suction system.
-            </p>
-        </article>
-
-        <article class="variant">
-            <h3>Thrust</h3>
-            <p>
-                Limited configuration described with acceleration
-                thrusters and additional performance systems.
-            </p>
-        </article>
-
-        <article class="variant">
-            <h3>Rocket</h3>
-            <p>
-                Invite-only configuration described with a full
-                flight system and single-seat layout. Not approved
-                for public road use.
-            </p>
-        </article>
+    <div class="orbit">
+        <div class="core">☁️</div>
+        <div class="float-icon i1">🐳</div>
+        <div class="float-icon i2">⚙️</div>
+        <div class="float-icon i3">🐧</div>
+        <div class="float-icon i4">🚀</div>
     </div>
-
-    <p class="notice">
-        Pricing, deposits, features and availability can change
-        by region. This demo does not process reservations or
-        payments. Confirm all information with Tesla before buying.
-    </p>
 </section>
 
-<section class="section" id="design">
-    <div class="design">
-        <img
-          src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=85"
-          alt="Sports car design inspiration"
-          loading="lazy">
+<section id="about" class="reveal">
+    <div class="section-heading">
+        <h2>About <span class="gradient">Me</span></h2>
+        <p>Learning today. Building for tomorrow.</p>
+    </div>
 
-        <div>
-            <h2>Minimalist Design.<br>Maximum Ambition.</h2>
-
+    <div class="about-layout">
+        <div class="about">
+            <h3 style="font-size:1.6rem">My Cloud & DevOps Journey 🚀</h3>
             <p>
-                The Roadster brings together a low-slung sports-car
-                profile, performance-focused proportions and
-                a vision of electric mobility. Explore the official
-                Tesla page for vehicle imagery, updates and the
-                latest announcements.
+                I am developing practical skills in AWS cloud services,
+                Linux administration, Git, Docker and Jenkins. I enjoy
+                learning by building projects, troubleshooting issues and
+                understanding how applications move from development to deployment.
             </p>
-
-            <a class="btn"
-               href="https://www.tesla.com/roadster"
-               target="_blank" rel="noopener noreferrer">
-                DISCOVER TESLA ROADSTER
-            </a>
+            <p>
+                I am interested in junior DevOps, cloud support and internship
+                opportunities where I can keep learning and contribute to a team.
+            </p>
         </div>
+
+        <div class="about-box">
+            <div class="stat"><span>Primary Focus</span><strong>Cloud & DevOps</strong></div>
+            <div class="stat"><span>Cloud Platform</span><strong>AWS</strong></div>
+            <div class="stat"><span>Automation</span><strong>Jenkins / Bash</strong></div>
+            <div class="stat"><span>Containerization</span><strong>Docker</strong></div>
+            <div class="stat"><span>Career Goal</span><strong>Junior DevOps Engineer</strong></div>
+        </div>
+    </div>
+</section>
+
+<section id="skills" class="reveal">
+    <div class="section-heading">
+        <h2>My <span class="gradient">Tech Stack</span></h2>
+        <p>Tools and technologies I am learning through hands-on practice.</p>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <div class="card-icon">☁️</div>
+            <h3>AWS Cloud</h3>
+            <p>Building and exploring cloud infrastructure and hosting web applications.</p>
+            <div class="pills">
+                <span class="pill">EC2</span><span class="pill">S3</span>
+                <span class="pill">IAM</span><span class="pill">VPC</span>
+                <span class="pill">ALB</span><span class="pill">Auto Scaling</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🐳</div>
+            <h3>Docker</h3>
+            <p>Packaging applications into containers and publishing images.</p>
+            <div class="pills">
+                <span class="pill">Images</span><span class="pill">Containers</span>
+                <span class="pill">Dockerfile</span><span class="pill">Docker Hub</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🔄</div>
+            <h3>CI/CD & Jenkins</h3>
+            <p>Learning to automate source checkout, testing, image builds and deployment.</p>
+            <div class="pills">
+                <span class="pill">Jenkins</span><span class="pill">CI/CD</span>
+                <span class="pill">Pipelines</span><span class="pill">Automation</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🐧</div>
+            <h3>Linux</h3>
+            <p>Managing services, permissions, files and application environments.</p>
+            <div class="pills">
+                <span class="pill">Bash</span><span class="pill">Shell Scripting</span>
+                <span class="pill">Systemctl</span><span class="pill">SSH</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🌿</div>
+            <h3>Git & GitHub</h3>
+            <p>Tracking source code changes and managing project repositories.</p>
+            <div class="pills">
+                <span class="pill">Git</span><span class="pill">GitHub</span>
+                <span class="pill">Branches</span><span class="pill">Version Control</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🌐</div>
+            <h3>Web Technologies</h3>
+            <p>Creating web pages and learning how to serve them through web servers.</p>
+            <div class="pills">
+                <span class="pill">HTML</span><span class="pill">CSS</span>
+                <span class="pill">Nginx</span><span class="pill">Apache</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="reveal">
+    <div class="section-heading">
+        <h2>Featured <span class="gradient">Projects</span></h2>
+        <p>Practical cloud and automation projects.</p>
+    </div>
+
+    <div class="grid">
+        <div class="card project-card">
+            <div class="card-icon">⚖️</div>
+            <h3>Highly Available AWS Web Application</h3>
+            <p>
+                Designed a web hosting architecture using an Application
+                Load Balancer, EC2 instances and an Auto Scaling Group.
+                Practiced health checks and scaling concepts.
+            </p>
+            <div class="pills">
+                <span class="pill">AWS EC2</span><span class="pill">ALB</span>
+                <span class="pill">ASG</span>
+            </div>
+            <a class="project-link" href="https://github.com/darshanpatil8799" target="_blank" rel="noopener noreferrer">View GitHub ↗</a>
+        </div>
+
+        <div class="card project-card">
+            <div class="card-icon">🔄</div>
+            <h3>Jenkins CI/CD with Docker</h3>
+            <p>
+                Building a pipeline that checks out website source code
+                from GitHub, builds a Docker image, tests the website,
+                pushes the image to Docker Hub and deploys a container.
+            </p>
+            <div class="pills">
+                <span class="pill">Jenkins</span><span class="pill">Docker</span>
+                <span class="pill">GitHub</span><span class="pill">Bash</span>
+            </div>
+            <a class="project-link" href="https://github.com/darshanpatil8799/CICD-Project" target="_blank" rel="noopener noreferrer">View Repository ↗</a>
+        </div>
+
+        <div class="card project-card">
+            <div class="card-icon">🖼️</div>
+            <h3>Cloud Image Hosting</h3>
+            <p>
+                Practiced hosting images in Amazon S3 and serving a
+                custom web page from an EC2 instance using a web server
+                and appropriate access permissions.
+            </p>
+            <div class="pills">
+                <span class="pill">Amazon S3</span><span class="pill">EC2</span>
+                <span class="pill">IAM</span><span class="pill">Nginx</span>
+            </div>
+            <a class="project-link" href="https://github.com/darshanpatil8799" target="_blank" rel="noopener noreferrer">View GitHub ↗</a>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="reveal">
+    <div class="section-heading">
+        <h2>Let's <span class="gradient">Connect</span></h2>
+        <p>Open to learning, collaboration and entry-level opportunities.</p>
+    </div>
+
+    <div class="contact-card">
+        <div class="card-icon">📡</div>
+        <h3 style="font-size:1.6rem">Have a Cloud or DevOps opportunity?</h3>
+        <p>
+            I would love to connect with professionals, learn from the
+            community and discuss cloud infrastructure and automation.
+        </p>
+
+        <div class="buttons" style="justify-content:center">
+            <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            <a class="btn secondary" href="https://github.com/darshanpatil8799" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </div>
+        <p style="font-size:.8rem">Replace the LinkedIn link with your personal profile URL.</p>
     </div>
 </section>
 
 <footer>
-    <p>TESLA ROADSTER — INDEPENDENT DEMO WEBSITE</p>
-
-    <p>
-        <a href="https://www.tesla.com/roadster"
-           target="_blank" rel="noopener noreferrer">
-            Official Tesla website
-        </a>
-    </p>
-
-    <p>Not affiliated with or operated by Tesla, Inc.</p>
+    <p>Designed & Built by Darshan Patil</p>
+    <p style="margin-top:8px">☁️ Cloud • ⚙️ DevOps • 🚀 Continuous Learning</p>
 </footer>
+
+<script>
+// Animated star field
+const canvas = document.getElementById('stars');
+const ctx = canvas.getContext('2d');
+let stars = [];
+
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    stars = Array.from({length: 100}, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.5 + .3,
+        speed: Math.random() * .35 + .08
+    }));
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(130,220,255,.65)';
+        ctx.fill();
+        star.y -= star.speed;
+        if (star.y < 0) {
+            star.y = canvas.height;
+            star.x = Math.random() * canvas.width;
+        }
+    });
+    requestAnimationFrame(animate);
+}
+
+resize();
+animate();
+window.addEventListener('resize', resize);
+
+// Reveal sections on scroll
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        }
+    });
+}, {threshold: 0.12});
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
