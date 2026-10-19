@@ -1,0 +1,593 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tesla Roadster | Electric Performance</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: #fff;
+    color: #171a20;
+    font-family: Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 25px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+    color: white;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 900;
+    letter-spacing: 5px;
+}
+
+nav {
+    display: flex;
+    gap: 28px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+nav a:hover { opacity: .65; }
+
+.hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: white;
+    background:
+        linear-gradient(90deg, #000b 0%, #0005 55%, #0002),
+        linear-gradient(0deg, #0007, transparent 50%),
+        url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2000&q=90")
+        center / cover no-repeat;
+}
+
+.hero-content {
+    padding: 120px 8%;
+    max-width: 750px;
+}
+
+.eyebrow {
+    letter-spacing: 4px;
+    font-size: 11px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: clamp(55px, 9vw, 110px);
+    letter-spacing: -5px;
+    line-height: .95;
+    font-weight: 800;
+}
+
+.hero p {
+    margin-top: 25px;
+    color: #ddd;
+    line-height: 1.8;
+    max-width: 430px;
+    font-size: 15px;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-block;
+    min-width: 180px;
+    text-align: center;
+    padding: 15px 22px;
+    border: 1px solid white;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: .3s;
+}
+
+.btn-light {
+    background: white;
+    color: #171a20;
+}
+
+.btn-outline {
+    background: transparent;
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    opacity: .8;
+}
+
+.section {
+    padding: 90px 8%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    line-height: 1.7;
+    max-width: 650px;
+    margin: 0 auto 50px;
+}
+
+.specs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.spec {
+    padding: 30px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.spec h3 {
+    font-size: clamp(28px, 4vw, 43px);
+    margin-bottom: 12px;
+}
+
+.spec p {
+    color: #666;
+    font-size: 12px;
+    letter-spacing: 1px;
+    line-height: 1.6;
+}
+
+.features {
+    background: #f5f5f5;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.feature {
+    background: white;
+    padding: 30px;
+    min-height: 190px;
+}
+
+.feature .number {
+    color: #e82127;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.feature h3 {
+    margin: 18px 0 12px;
+    font-size: 19px;
+}
+
+.feature p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.price-section {
+    background: #101114;
+    color: white;
+    text-align: center;
+}
+
+.price-card {
+    max-width: 720px;
+    margin: auto;
+    padding: 45px 25px;
+    border: 1px solid #45464b;
+}
+
+.price-card h3 {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #bbb;
+}
+
+.price {
+    font-size: clamp(28px, 5vw, 45px);
+    margin: 25px 0 15px;
+}
+
+.price-card p {
+    color: #bbb;
+    line-height: 1.8;
+    font-size: 14px;
+    margin: 15px auto 25px;
+}
+
+.price-card .btn {
+    margin: 5px;
+}
+
+.variants {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 40px auto 0;
+    text-align: left;
+}
+
+.variant {
+    padding: 25px;
+    border: 1px solid #444;
+}
+
+.variant h3 {
+    margin-bottom: 15px;
+    font-size: 21px;
+}
+
+.variant p {
+    font-size: 13px;
+    line-height: 1.8;
+    color: #bbb;
+}
+
+.notice {
+    color: #aaa;
+    font-size: 11px;
+    line-height: 1.8;
+    max-width: 850px;
+    margin: 35px auto 0;
+}
+
+.design {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.design img {
+    width: 100%;
+    display: block;
+}
+
+.design h2 {
+    font-size: 38px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.design p {
+    color: #666;
+    line-height: 1.9;
+    font-size: 14px;
+}
+
+.design .btn {
+    margin-top: 25px;
+    background: #171a20;
+    color: white;
+    border-color: #171a20;
+}
+
+footer {
+    background: #f5f5f5;
+    padding: 35px 7%;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 11px;
+    color: #555;
+}
+
+footer a {
+    text-decoration: underline;
+}
+
+@media(max-width: 800px) {
+    header { padding: 22px 5%; }
+    nav { gap: 12px; }
+    nav a { font-size: 10px; }
+    .hero-content { padding: 130px 6% 80px; }
+    .specs, .feature-grid, .variants {
+        grid-template-columns: 1fr;
+    }
+    .design { grid-template-columns: 1fr; }
+    .section { padding: 65px 6%; }
+    h1 { letter-spacing: -2px; }
+}
+
+@media(max-width: 480px) {
+    header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 17px;
+    }
+    nav {
+        flex-wrap: wrap;
+    }
+    .hero { min-height: 90vh; }
+    .hero-content { padding-top: 170px; }
+    .btn { width: 100%; }
+    .section-title { font-size: 28px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a href="#" class="logo">TESLA</a>
+
+    <nav>
+        <a href="#performance">Performance</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#design">Design</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="eyebrow">ALL-ELECTRIC SUPERCAR</div>
+
+        <h1>ROADSTER</h1>
+
+        <p>
+            Uncompromising performance. Aerodynamic design.
+            Revolutionary electric engineering.
+            Discover the next generation of the Tesla Roadster.
+        </p>
+
+        <div class="actions">
+            <a class="btn btn-light" href="#performance">
+                EXPLORE ROADSTER
+            </a>
+
+            <a class="btn btn-outline"
+               href="https://www.tesla.com/roadster"
+               target="_blank" rel="noopener noreferrer">
+                OFFICIAL TESLA WEBSITE
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="performance">
+    <h2 class="section-title">Built for Extraordinary Performance</h2>
+
+    <p class="subtitle">
+        Tesla's published Roadster headline specifications.
+        Actual final production specifications may change.
+    </p>
+
+    <div class="specs">
+        <div class="spec">
+            <h3>1.9 sec*</h3>
+            <p>0–60 MPH<br>ACCELERATION TARGET</p>
+        </div>
+
+        <div class="spec">
+            <h3>250+ MPH*</h3>
+            <p>TOP SPEED<br>CLAIMED TARGET</p>
+        </div>
+
+        <div class="spec">
+            <h3>620 mi*</h3>
+            <p>ESTIMATED RANGE<br>PER CHARGE</p>
+        </div>
+    </div>
+</section>
+
+<section class="section features" id="features">
+    <h2 class="section-title">Technology & Features</h2>
+
+    <p class="subtitle">
+        Performance, control and design combine in Tesla's
+        next-generation Roadster concept.
+    </p>
+
+    <div class="feature-grid">
+        <article class="feature">
+            <div class="number">01 / POWER</div>
+            <h3>All-Electric Performance</h3>
+            <p>
+                Electric propulsion designed for rapid acceleration
+                and responsive power delivery.
+            </p>
+        </article>
+
+        <article class="feature">
+            <div class="number">02 / AERODYNAMICS</div>
+            <h3>Active Aerodynamics</h3>
+            <p>
+                An aerodynamic design and active systems intended
+                to improve stability and performance.
+            </p>
+        </article>
+
+        <article class="feature">
+            <div class="number">03 / INTERIOR</div>
+            <h3>Driver-Focused Cabin</h3>
+            <p>
+                A minimalist cockpit concept with a steering
+                interface and digital displays.
+            </p>
+        </article>
+
+        <article class="feature">
+            <div class="number">04 / ROOF</div>
+            <h3>Removable Glass Roof</h3>
+            <p>
+                Tesla describes a removable glass roof that can
+                be stored in the car for an open-air experience.
+            </p>
+        </article>
+
+        <article class="feature">
+            <div class="number">05 / CONTROL</div>
+            <h3>Advanced Vehicle Control</h3>
+            <p>
+                The latest Roadster presentation describes
+                advanced steering and track-focused control systems.
+            </p>
+        </article>
+
+        <article class="feature">
+            <div class="number">06 / SPACE-AGE TECH</div>
+            <h3>Optional Thrust Technology</h3>
+            <p>
+                Tesla describes optional cold-gas thrusters
+                for special performance configurations. Flight
+                capability is not approved for public road use.
+            </p>
+        </article>
+    </div>
+</section>
+
+<section class="section price-section" id="pricing">
+    <h2 class="section-title">Pricing & Reservations</h2>
+
+    <p class="subtitle">
+        Check Tesla directly for the latest official pricing,
+        reservation terms and delivery information.
+    </p>
+
+    <div class="price-card">
+        <h3>TESLA ROADSTER</h3>
+
+        <div class="price">Price not confirmed</div>
+
+        <p>
+            A final retail price and delivery schedule have not
+            been confirmed here. Reservation deposits are not
+            the total vehicle purchase price.
+        </p>
+
+        <a class="btn btn-light"
+           href="https://www.tesla.com/roadster"
+           target="_blank" rel="noopener noreferrer">
+            CHECK OFFICIAL PRICING
+        </a>
+
+        <a class="btn btn-outline"
+           href="https://www.tesla.com/roadster"
+           target="_blank" rel="noopener noreferrer">
+            RESERVATION DETAILS
+        </a>
+    </div>
+
+    <div class="variants">
+        <article class="variant">
+            <h3>Performance</h3>
+            <p>
+                Road-focused configuration with seating for two,
+                active aerodynamics and a multi-mode suction system.
+            </p>
+        </article>
+
+        <article class="variant">
+            <h3>Thrust</h3>
+            <p>
+                Limited configuration described with acceleration
+                thrusters and additional performance systems.
+            </p>
+        </article>
+
+        <article class="variant">
+            <h3>Rocket</h3>
+            <p>
+                Invite-only configuration described with a full
+                flight system and single-seat layout. Not approved
+                for public road use.
+            </p>
+        </article>
+    </div>
+
+    <p class="notice">
+        Pricing, deposits, features and availability can change
+        by region. This demo does not process reservations or
+        payments. Confirm all information with Tesla before buying.
+    </p>
+</section>
+
+<section class="section" id="design">
+    <div class="design">
+        <img
+          src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=85"
+          alt="Sports car design inspiration"
+          loading="lazy">
+
+        <div>
+            <h2>Minimalist Design.<br>Maximum Ambition.</h2>
+
+            <p>
+                The Roadster brings together a low-slung sports-car
+                profile, performance-focused proportions and
+                a vision of electric mobility. Explore the official
+                Tesla page for vehicle imagery, updates and the
+                latest announcements.
+            </p>
+
+            <a class="btn"
+               href="https://www.tesla.com/roadster"
+               target="_blank" rel="noopener noreferrer">
+                DISCOVER TESLA ROADSTER
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>TESLA ROADSTER — INDEPENDENT DEMO WEBSITE</p>
+
+    <p>
+        <a href="https://www.tesla.com/roadster"
+           target="_blank" rel="noopener noreferrer">
+            Official Tesla website
+        </a>
+    </p>
+
+    <p>Not affiliated with or operated by Tesla, Inc.</p>
+</footer>
+
+</body>
+</html>
+
